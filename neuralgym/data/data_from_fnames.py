@@ -72,7 +72,7 @@ class DataFromFNames(Dataset):
         self.random_crop = random_crop
         self.filetype = filetype
         if isinstance(shapes[0], list):
-            self.shapes = shapes
+cv2            self.shapes = shapes
         else:
             self.shapes = [shapes] * len(self.fnamelists_[0])
         if isinstance(dtypes, list):
@@ -147,7 +147,7 @@ class DataFromFNames(Dataset):
                 # self._queue.size(), dtypes.float32) * (1. / capacity))
 
     def read_img(self, filename):
-        img = cv2.imread(filename)
+        img = cv2.imread(filename, -1)
         if img is None:
             print('image is None, sleep this thread for 0.1s.')
             time.sleep(0.1)
