@@ -88,7 +88,7 @@ class Trainer(object):
         self.context['sess'] = tf.Session(config=self.context['sess_config'])
         self.context['summary_writer'] = tf.summary.FileWriter(
             self.context['log_dir'], self.context['sess'].graph)
-        self.context['saver'] = tf.train.Saver(tf.global_variables())
+        self.context['saver'] = tf.train.Saver(tf.global_variables(), max_to_keep=None)
         # queue runner
         self.context['start_queue_runners'] = self.context.pop(
             'start_queue_runner', True)
